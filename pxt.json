@@ -1,13 +1,21 @@
 {
-  "name": "pxt-ludwig-assets",
-  "version": "0.0.1",
-  "description": "Eigene wiederverwendbare Assets für MakeCode Arcade",
-  "dependencies": {
-    "device": "*"
-  },
-  "files": [
-    "main.ts"
-  ],
-  "testFiles": [],
-  "public": true
+    "name": "pxt-ludwig-assets",
+    "version": "0.0.1",
+    "description": "Eigene wiederverwendbare Assets für MakeCode Arcade",
+    "dependencies": {
+        "device": "*"
+    },
+    "files": [
+        "main.ts"
+    ],
+    "testFiles": [],
+    "public": true,
+    "targetVersions": {
+        "target": "2.0.62",
+        "targetId": "arcade"
+    },
+    "supportedTargets": [
+        "arcade"
+    ],
+    "preferredEditor": "tsprj"
 }
