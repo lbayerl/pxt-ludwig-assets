@@ -3,34 +3,105 @@
 namespace ludwigAssets {
 
     //
-    // Beispiel: Sprite zurückgeben
+    // 1) Einfaches Test-Sprite
     //
-    //% block="create test sprite"
+    //% block="erstelle Test-Sprite"
     export function createTestSprite(): Sprite {
-        return sprites.create(assets.image.testSprite)
+        const s = sprites.create(
+            img`
+                . . . . . . . . . . . . . . . .
+                . . . . . . . 5 5 . . . . . . .
+                . . . . . 5 5 5 5 5 5 . . . . .
+                . . . . . 5 2 5 5 2 5 . . . . .
+                . . . . . 5 2 2 2 2 5 . . . . .
+                . . . . . 5 5 5 5 5 5 . . . . .
+                . . . . . . 5 5 5 5 . . . . . .
+                . . . . . . 5 5 5 5 . . . . . .
+                . . . . . 5 5 . . 5 5 . . . . .
+                . . . . . 5 . . . . 5 . . . . .
+                . . . . . 5 . . . . 5 . . . . .
+                . . . . . 5 . . . . 5 . . . . .
+                . . . . . 5 . . . . 5 . . . . .
+                . . . . . . 5 . . 5 . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+            `,
+            SpriteKind.Player
+        )
+        return s
     }
 
     //
-    // Beispiel: Soundeffekt abspielen
+    // 2) Kleiner Hit-Soundeffekt
     //
-    //% block="play test sfx"
+    //% block="spiele Test-SFX"
     export function playTestSfx() {
-        music.play(assets.sound.testSfx, music.PlaybackMode.InBackground)
+        const sfx = soundEffects.createSoundEffect(
+            WaveShape.Noise,
+            500,   // start freq
+            100,   // end freq
+            255,   // volume
+            0,     // start duration
+            200,   // end duration
+            SoundExpressionEffect.None,
+            InterpolationCurve.Curve
+        )
+        music.play(sfx, music.PlaybackMode.InBackground)
     }
 
     //
-    // Beispiel: Musik abspielen
+    // 3) Kleine Test-Musik
     //
-    //% block="play test music"
+    //% block="spiele Test-Musik"
     export function playTestMusic() {
-        music.play(assets.music.testSong, music.PlaybackMode.InBackground)
+        const song = music.createSong(hex`
+            30300004080004000200040008000000080004000200040008000000
+            04000400080000000200040008000000080004000200040008000000
+        `)
+        music.play(song, music.PlaybackMode.LoopingInBackground)
     }
 
     //
-    // Beispiel: Tilemap setzen
+    // 4) Einfaches Tile + Tilemap
     //
-    //% block="set test tilemap"
+
+    const floorTile = img`
+        6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6
+        6 . . . . . . . . . . . . . . 6
+        6 . . . . . . . . . . . . . . 6
+        6 . . . . . . . . . . . . . . 6
+        6 . . . . . . . . . . . . . . 6
+        6 . . . . . . . . . . . . . . 6
+        6 . . . . . . . . . . . . . . 6
+        6 . . . . . . . . . . . . . . 6
+        6 . . . . . . . . . . . . . . 6
+        6 . . . . . . . . . . . . . . 6
+        6 . . . . . . . . . . . . . . 6
+        6 . . . . . . . . . . . . . . 6
+        6 . . . . . . . . . . . . . . 6
+        6 . . . . . . . . . . . . . . 6
+        6 . . . . . . . . . . . . . . 6
+        6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6
+    `
+
+    //% block="setze Test-Tilemap"
     export function setTestTilemap() {
-        tiles.setCurrentTilemap(assets.tilemap.testMap)
+        const tm = tiles.createTilemap(
+            hex`
+                0404
+                0000
+                0110
+                0000
+            `,
+            img`
+                2 2 2 2
+                2 2 2 2
+                2 2 2 2
+                2 2 2 2
+            `,
+            [floorTile, sprites.castle.tilePath1],
+            TileScale.Sixteen
+        )
+        tiles.setCurrentTilemap(tm)
     }
 }
