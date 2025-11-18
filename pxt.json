@@ -6,7 +6,10 @@
         "device": "*"
     },
     "files": [
-        "main.ts"
+        "main.ts",
+        "main.py",
+        "images.g.jres",
+        "images.g.ts"
     ],
     "testFiles": [],
     "public": true,
@@ -17,5 +20,10 @@
     "supportedTargets": [
         "arcade"
     ],
-    "preferredEditor": "tsprj"
+    "preferredEditor": "tsprj",
+    "yotta": {
+        "config": {
+            "PXT_GC_CHECKS": 1
+        }
+    }
 }

@@ -5,24 +5,7 @@ namespace ludwigAssets {
 //% block="Test-Sprite Bild"
 //% imageLiteral=1
 export function testSpriteImg(): Image {
-    return img`
-        . . . . . . . . . . . . . . . .
-        . . . . . . . 5 5 . . . . . . .
-        . . . . . 5 5 5 5 5 5 . . . . .
-        . . . . . 5 2 5 5 2 5 . . . . .
-        . . . . . 5 2 2 2 2 5 . . . . .
-        . . . . . 5 5 5 5 5 5 . . . . .
-        . . . . . . 5 5 5 5 . . . . . .
-        . . . . . . 5 5 5 5 . . . . . .
-        . . . . . 5 5 . . 5 5 . . . . .
-        . . . . . 5 . . . . 5 . . . . .
-        . . . . . 5 . . . . 5 . . . . .
-        . . . . . 5 . . . . 5 . . . . .
-        . . . . . 5 . . . . 5 . . . . .
-        . . . . . . 5 . . 5 . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-    `
+    return assets.image`lalien`
 }
 
     
@@ -50,8 +33,7 @@ export function testSpriteImg(): Image {
                 . . . . . . . . . . . . . . . .
                 . . . . . . . . . . . . . . . .
             `,
-            SpriteKind.Player
-        )
+            SpriteKind.Player)
         return s
     }
 
@@ -60,16 +42,7 @@ export function testSpriteImg(): Image {
     //
     //% block="spiele Test-SFX"
     export function playTestSfx() {
-        const sfx = music.createSoundEffect(
-            WaveShape.Noise,
-            500,  // start frequency
-            100,  // end frequency
-            255,  // start volume
-            0,    // end volume
-            200,  // duration (ms)
-            SoundExpressionEffect.None,
-            InterpolationCurve.Curve
-        )
+        const sfx = music.createSoundEffect(WaveShape.Sine, 5000, 0, 255, 0, 500, SoundExpressionEffect.None, InterpolationCurve.Linear)
         music.play(sfx, music.PlaybackMode.InBackground)
     }
 
