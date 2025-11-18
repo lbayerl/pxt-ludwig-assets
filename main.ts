@@ -36,13 +36,13 @@ namespace ludwigAssets {
     //
     //% block="spiele Test-SFX"
     export function playTestSfx() {
-        const sfx = soundEffects.createSoundEffect(
+        const sfx = music.createSoundEffect(
             WaveShape.Noise,
-            500,   // start freq
-            100,   // end freq
-            255,   // volume
-            0,     // start duration
-            200,   // end duration
+            500,  // start frequency
+            100,  // end frequency
+            255,  // start volume
+            0,    // end volume
+            200,  // duration (ms)
             SoundExpressionEffect.None,
             InterpolationCurve.Curve
         )
